@@ -19,3 +19,8 @@
 
 (define (sqrt x)
   (sqrt-iter 1.0 x))
+
+;; Testing out the questionable if replacement
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
