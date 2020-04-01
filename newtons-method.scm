@@ -24,3 +24,24 @@
 (define (new-if predicate then-clause else-clause)
   (cond (predicate then-clause)
         (else else-clause)))
+
+;; Combining
+(define (i-sqrt x)
+  (define (i-sqrt-iter guess x)
+    (if (i-good-enough? guess x)
+	guess
+	(i-sqrt-iter (improve guess x)
+		   x)))
+
+  (define (i-improve guess x)
+    (i-average guess (/ x guess)))
+
+  (define (i-average x y)
+    (/ (+ x y) 2))
+
+  (define (i-good-enough? guess x)
+    (< (abs (- (i-square guess) x)) 0.0001))
+
+  (define (i-square x)
+    (* x x))
+  (i-sqrt-iter 1.0 x))
