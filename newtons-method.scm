@@ -27,21 +27,21 @@
 
 ;; Combining
 (define (i-sqrt x)
-  (define (i-sqrt-iter guess x)
-    (if (i-good-enough? guess x)
+  (define (i-sqrt-iter guess)
+    (if (i-good-enough? guess)
 	guess
-	(i-sqrt-iter (improve guess x)
+	(i-sqrt-iter (i-improve guess)
 		   x)))
 
-  (define (i-improve guess x)
+  (define (i-improve guess)
     (i-average guess (/ x guess)))
 
-  (define (i-average x y)
+  (define (i-average y)
     (/ (+ x y) 2))
 
-  (define (i-good-enough? guess x)
+  (define (i-good-enough? guess)
     (< (abs (- (i-square guess) x)) 0.0001))
 
-  (define (i-square x)
-    (* x x))
-  (i-sqrt-iter 1.0 x))
+  (define (i-square val)
+    (* val val))
+  (i-sqrt-iter 1.0))
