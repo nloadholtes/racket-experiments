@@ -30,14 +30,13 @@
   (define (i-sqrt-iter guess)
     (if (i-good-enough? guess)
 	guess
-	(i-sqrt-iter (i-improve guess)
-		   x)))
+	(i-sqrt-iter (i-improve guess))))
 
   (define (i-improve guess)
     (i-average guess (/ x guess)))
 
-  (define (i-average y)
-    (/ (+ x y) 2))
+  (define (i-average a b)
+    (/ (+ a b) 2))
 
   (define (i-good-enough? guess)
     (< (abs (- (i-square guess) x)) 0.0001))
