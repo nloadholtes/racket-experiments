@@ -10,6 +10,9 @@
                              (buffer-name)
                              t)))
 
+;; An attempt to join selected lines together
+;;
+;; Problems: Doesn't work
 (defun top-join-line ()
   "Join the current line with the line beneath it."
   (interactive)
