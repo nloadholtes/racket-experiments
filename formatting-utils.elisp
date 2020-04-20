@@ -1,0 +1,16 @@
+;; Takes a region of JSON and runs it through the Python formatting tool
+;;
+;; Problems: It chokes on None (should be null), chokes on u' (should be ")
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (region-beginning)
+                             (region-end)
+                             "python -m json.tool"
+                             (buffer-name)
+                             t)))
+
+(defun top-join-line ()
+  "Join the current line with the line beneath it."
+  (interactive)
+  (delete-indentation 1))
